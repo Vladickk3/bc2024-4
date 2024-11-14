@@ -34,7 +34,7 @@ const server = http.createServer(async (req, res) => {
                 try {
                     const response = await superagent.get(`https://http.cat/${statusCode}`);
                     console.log(`Отримано зображення з http.cat для статусу: ${statusCode}`);
-                    await fs.writeFile(filePath, response.body); // Зберігаємо картинку в кеш
+                    await fs.writeFile(filePath, response.body); 
                     res.writeHead(200, { 'Content-Type': 'image/jpeg' });
                     res.end(response.body);
                 } catch (catErr) {

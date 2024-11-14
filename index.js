@@ -13,13 +13,13 @@ program
 program.parse(process.argv);
 const options = program.opts();
 
-// Створіть директорію кешу, якщо вона не існує
+
 fs.mkdir(options.cache, { recursive: true });
 
 const server = http.createServer(async (req, res) => {
-    console.log(`Запит: ${req.method} ${req.url}`); // Логування запиту
+    console.log(`Запит: ${req.method} ${req.url}`); 
     const urlParts = req.url.split('/');
-    const statusCode = urlParts[1]; // Отримуємо код статусу з URL
+    const statusCode = urlParts[1]; 
     const filePath = path.join(options.cache, `${statusCode}.jpg`);
 
     switch (req.method) {
@@ -76,4 +76,4 @@ const server = http.createServer(async (req, res) => {
 server.listen(options.port, options.host, () => {
     console.log(`Сервер запущено на ${options.host}:${options.port}`);
 });
-//The End
+
